@@ -1,0 +1,28 @@
+10:11:11.627  Config reconnection thread create success
+10:11:11.628  Reco result reconnection thread create success
+10:11:11.629  rs485 result reconnection thread create success
+10:11:11.631  gpio reconnection thread create success
+10:11:37.483  Config reconnection thread create success
+10:11:37.485  Reco result reconnection thread create success
+10:11:37.486  rs485 result reconnection thread create success
+10:11:37.487  gpio reconnection thread create success
+10:31:20.883  Config reconnection thread create success
+10:31:20.885  Reco result reconnection thread create success
+10:31:20.886  rs485 result reconnection thread create success
+10:31:20.888  gpio reconnection thread create success
+15:37:34.645  Config reconnection thread create success
+15:37:34.652  Reco result reconnection thread create success
+15:37:34.659  rs485 result reconnection thread create success
+15:37:34.664  gpio reconnection thread create success
+16:01:11.750  Config reconnection thread create success
+16:01:11.753  Reco result reconnection thread create success
+16:01:11.754  rs485 result reconnection thread create success
+16:01:11.756  gpio reconnection thread create success
+16:01:40.545  Config reconnection thread create success
+16:01:40.549  Reco result reconnection thread create success
+16:01:40.553  rs485 result reconnection thread create success
+16:01:40.557  gpio reconnection thread create success
+16:06:12.569  Config reconnection thread create success
+16:06:12.572  Reco result reconnection thread create success
+16:06:12.575  rs485 result reconnection thread create success
+16:06:12.577  gpio reconnection thread create success

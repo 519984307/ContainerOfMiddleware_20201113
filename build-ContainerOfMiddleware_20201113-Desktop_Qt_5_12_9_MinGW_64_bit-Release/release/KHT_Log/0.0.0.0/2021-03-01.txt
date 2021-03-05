@@ -1,0 +1,8 @@
+15:30:07.710  Config reconnection thread create success
+15:30:07.712  Reco result reconnection thread create success
+15:30:07.713  rs485 result reconnection thread create success
+15:30:07.714  gpio reconnection thread create success
+15:30:25.303  Config reconnection thread create success
+15:30:25.305  Reco result reconnection thread create success
+15:30:25.306  rs485 result reconnection thread create success
+15:30:25.307  gpio reconnection thread create success
