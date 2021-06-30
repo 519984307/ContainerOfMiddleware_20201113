@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainWindow_t {
-    QByteArrayData data[37];
-    char stringdata0[519];
+    QByteArrayData data[44];
+    char stringdata0[592];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -50,24 +50,31 @@ QT_MOC_LITERAL(15, 202, 7), // "address"
 QT_MOC_LITERAL(16, 210, 11), // "serviceType"
 QT_MOC_LITERAL(17, 222, 11), // "serviceMode"
 QT_MOC_LITERAL(18, 234, 22), // "releaseResourcesSignal"
-QT_MOC_LITERAL(19, 257, 26), // "resultsTheLicensePlateSlot"
-QT_MOC_LITERAL(20, 284, 5), // "plate"
-QT_MOC_LITERAL(21, 290, 5), // "color"
-QT_MOC_LITERAL(22, 296, 4), // "time"
-QT_MOC_LITERAL(23, 301, 6), // "arrImg"
-QT_MOC_LITERAL(24, 308, 18), // "equipmentStateSlot"
-QT_MOC_LITERAL(25, 327, 5), // "state"
-QT_MOC_LITERAL(26, 333, 18), // "socketReadDataSlot"
-QT_MOC_LITERAL(27, 352, 4), // "data"
-QT_MOC_LITERAL(28, 357, 19), // "socketLinkStateSlot"
-QT_MOC_LITERAL(29, 377, 11), // "messageSlot"
-QT_MOC_LITERAL(30, 389, 4), // "type"
-QT_MOC_LITERAL(31, 394, 8), // "copyFile"
-QT_MOC_LITERAL(32, 403, 8), // "datetime"
-QT_MOC_LITERAL(33, 412, 24), // "on_putpushButton_clicked"
-QT_MOC_LITERAL(34, 437, 28), // "on_capturepushButton_clicked"
-QT_MOC_LITERAL(35, 466, 30), // "on_send485pushButton_2_clicked"
-QT_MOC_LITERAL(36, 497, 21) // "on_pushButton_clicked"
+QT_MOC_LITERAL(19, 257, 19), // "slot_handleFinished"
+QT_MOC_LITERAL(20, 277, 26), // "resultsTheLicensePlateSlot"
+QT_MOC_LITERAL(21, 304, 5), // "plate"
+QT_MOC_LITERAL(22, 310, 5), // "color"
+QT_MOC_LITERAL(23, 316, 4), // "time"
+QT_MOC_LITERAL(24, 321, 6), // "arrImg"
+QT_MOC_LITERAL(25, 328, 13), // "imageFlowSlot"
+QT_MOC_LITERAL(26, 342, 3), // "img"
+QT_MOC_LITERAL(27, 346, 18), // "equipmentStateSlot"
+QT_MOC_LITERAL(28, 365, 5), // "state"
+QT_MOC_LITERAL(29, 371, 18), // "socketReadDataSlot"
+QT_MOC_LITERAL(30, 390, 4), // "data"
+QT_MOC_LITERAL(31, 395, 19), // "socketLinkStateSlot"
+QT_MOC_LITERAL(32, 415, 11), // "messageSlot"
+QT_MOC_LITERAL(33, 427, 4), // "type"
+QT_MOC_LITERAL(34, 432, 8), // "copyFile"
+QT_MOC_LITERAL(35, 441, 8), // "datetime"
+QT_MOC_LITERAL(36, 450, 6), // "rename"
+QT_MOC_LITERAL(37, 457, 9), // "plateTime"
+QT_MOC_LITERAL(38, 467, 24), // "on_putpushButton_clicked"
+QT_MOC_LITERAL(39, 492, 28), // "on_capturepushButton_clicked"
+QT_MOC_LITERAL(40, 521, 30), // "on_send485pushButton_2_clicked"
+QT_MOC_LITERAL(41, 552, 21), // "on_pushButton_clicked"
+QT_MOC_LITERAL(42, 574, 12), // "slot_getPass"
+QT_MOC_LITERAL(43, 587, 4) // "pass"
 
     },
     "MainWindow\0initCameraSignal\0\0localAddr\0"
@@ -77,14 +84,16 @@ QT_MOC_LITERAL(36, 497, 21) // "on_pushButton_clicked"
     "liftingElectronicRailingSignal\0gate\0"
     "InitializationParameterSignal\0address\0"
     "serviceType\0serviceMode\0releaseResourcesSignal\0"
-    "resultsTheLicensePlateSlot\0plate\0color\0"
-    "time\0arrImg\0equipmentStateSlot\0state\0"
+    "slot_handleFinished\0resultsTheLicensePlateSlot\0"
+    "plate\0color\0time\0arrImg\0imageFlowSlot\0"
+    "img\0equipmentStateSlot\0state\0"
     "socketReadDataSlot\0data\0socketLinkStateSlot\0"
     "messageSlot\0type\0copyFile\0datetime\0"
-    "on_putpushButton_clicked\0"
+    "rename\0plateTime\0on_putpushButton_clicked\0"
     "on_capturepushButton_clicked\0"
     "on_send485pushButton_2_clicked\0"
-    "on_pushButton_clicked"
+    "on_pushButton_clicked\0slot_getPass\0"
+    "pass"
 };
 #undef QT_MOC_LITERAL
 
@@ -94,7 +103,7 @@ static const uint qt_meta_data_MainWindow[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-      16,   14, // methods
+      20,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -102,24 +111,28 @@ static const uint qt_meta_data_MainWindow[] = {
        6,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    6,   94,    2, 0x06 /* Public */,
-       9,    0,  107,    2, 0x06 /* Public */,
-      10,    1,  108,    2, 0x06 /* Public */,
-      12,    1,  111,    2, 0x06 /* Public */,
-      14,    4,  114,    2, 0x06 /* Public */,
-      18,    0,  123,    2, 0x06 /* Public */,
+       1,    6,  114,    2, 0x06 /* Public */,
+       9,    0,  127,    2, 0x06 /* Public */,
+      10,    1,  128,    2, 0x06 /* Public */,
+      12,    1,  131,    2, 0x06 /* Public */,
+      14,    4,  134,    2, 0x06 /* Public */,
+      18,    0,  143,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-      19,    4,  124,    2, 0x08 /* Private */,
-      24,    1,  133,    2, 0x08 /* Private */,
-      26,    1,  136,    2, 0x08 /* Private */,
-      28,    2,  139,    2, 0x08 /* Private */,
-      29,    2,  144,    2, 0x08 /* Private */,
-      31,    2,  149,    2, 0x08 /* Private */,
-      33,    0,  154,    2, 0x08 /* Private */,
-      34,    0,  155,    2, 0x08 /* Private */,
-      35,    0,  156,    2, 0x08 /* Private */,
-      36,    0,  157,    2, 0x08 /* Private */,
+      19,    0,  144,    2, 0x08 /* Private */,
+      20,    4,  145,    2, 0x08 /* Private */,
+      25,    1,  154,    2, 0x08 /* Private */,
+      27,    1,  157,    2, 0x08 /* Private */,
+      29,    1,  160,    2, 0x08 /* Private */,
+      31,    2,  163,    2, 0x08 /* Private */,
+      32,    2,  168,    2, 0x08 /* Private */,
+      34,    2,  173,    2, 0x08 /* Private */,
+      36,    2,  178,    2, 0x08 /* Private */,
+      38,    0,  183,    2, 0x08 /* Private */,
+      39,    0,  184,    2, 0x08 /* Private */,
+      40,    0,  185,    2, 0x08 /* Private */,
+      41,    0,  186,    2, 0x08 /* Private */,
+      42,    1,  187,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::QString, QMetaType::QString, QMetaType::Int, QMetaType::QString, QMetaType::Int, QMetaType::Int,    3,    4,    5,    6,    7,    8,
@@ -130,16 +143,20 @@ static const uint qt_meta_data_MainWindow[] = {
     QMetaType::Void,
 
  // slots: parameters
-    QMetaType::Void, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::QByteArray,   20,   21,   22,   23,
-    QMetaType::Void, QMetaType::Bool,   25,
-    QMetaType::Void, QMetaType::QString,   27,
-    QMetaType::Void, QMetaType::QString, QMetaType::Bool,   15,   25,
-    QMetaType::Void, QMetaType::QString, QMetaType::QString,   30,   11,
-    QMetaType::Void, QMetaType::QString, QMetaType::QString,   20,   32,
+    QMetaType::Void,
+    QMetaType::Void, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::QByteArray,   21,   22,   23,   24,
+    QMetaType::Void, QMetaType::QByteArray,   26,
+    QMetaType::Void, QMetaType::Bool,   28,
+    QMetaType::Void, QMetaType::QString,   30,
+    QMetaType::Void, QMetaType::QString, QMetaType::Bool,   15,   28,
+    QMetaType::Void, QMetaType::QString, QMetaType::QString,   33,   11,
+    QMetaType::Void, QMetaType::QString, QMetaType::QString,   21,   35,
+    QMetaType::Void, QMetaType::QString, QMetaType::QString,   21,   37,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
+    QMetaType::Void, QMetaType::QString,   43,
 
        0        // eod
 };
@@ -156,16 +173,20 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 3: _t->liftingElectronicRailingSignal((*reinterpret_cast< bool(*)>(_a[1]))); break;
         case 4: _t->InitializationParameterSignal((*reinterpret_cast< const QString(*)>(_a[1])),(*reinterpret_cast< const quint16(*)>(_a[2])),(*reinterpret_cast< const int(*)>(_a[3])),(*reinterpret_cast< const int(*)>(_a[4]))); break;
         case 5: _t->releaseResourcesSignal(); break;
-        case 6: _t->resultsTheLicensePlateSlot((*reinterpret_cast< const QString(*)>(_a[1])),(*reinterpret_cast< const QString(*)>(_a[2])),(*reinterpret_cast< const QString(*)>(_a[3])),(*reinterpret_cast< QByteArray(*)>(_a[4]))); break;
-        case 7: _t->equipmentStateSlot((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 8: _t->socketReadDataSlot((*reinterpret_cast< const QString(*)>(_a[1]))); break;
-        case 9: _t->socketLinkStateSlot((*reinterpret_cast< const QString(*)>(_a[1])),(*reinterpret_cast< bool(*)>(_a[2]))); break;
-        case 10: _t->messageSlot((*reinterpret_cast< const QString(*)>(_a[1])),(*reinterpret_cast< const QString(*)>(_a[2]))); break;
-        case 11: _t->copyFile((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2]))); break;
-        case 12: _t->on_putpushButton_clicked(); break;
-        case 13: _t->on_capturepushButton_clicked(); break;
-        case 14: _t->on_send485pushButton_2_clicked(); break;
-        case 15: _t->on_pushButton_clicked(); break;
+        case 6: _t->slot_handleFinished(); break;
+        case 7: _t->resultsTheLicensePlateSlot((*reinterpret_cast< const QString(*)>(_a[1])),(*reinterpret_cast< const QString(*)>(_a[2])),(*reinterpret_cast< const QString(*)>(_a[3])),(*reinterpret_cast< QByteArray(*)>(_a[4]))); break;
+        case 8: _t->imageFlowSlot((*reinterpret_cast< QByteArray(*)>(_a[1]))); break;
+        case 9: _t->equipmentStateSlot((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 10: _t->socketReadDataSlot((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 11: _t->socketLinkStateSlot((*reinterpret_cast< const QString(*)>(_a[1])),(*reinterpret_cast< bool(*)>(_a[2]))); break;
+        case 12: _t->messageSlot((*reinterpret_cast< const QString(*)>(_a[1])),(*reinterpret_cast< const QString(*)>(_a[2]))); break;
+        case 13: _t->copyFile((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2]))); break;
+        case 14: _t->rename((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2]))); break;
+        case 15: _t->on_putpushButton_clicked(); break;
+        case 16: _t->on_capturepushButton_clicked(); break;
+        case 17: _t->on_send485pushButton_2_clicked(); break;
+        case 18: _t->on_pushButton_clicked(); break;
+        case 19: _t->slot_getPass((*reinterpret_cast< QString(*)>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -244,13 +265,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 16)
+        if (_id < 20)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 16;
+        _id -= 20;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 16)
+        if (_id < 20)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 16;
+        _id -= 20;
     }
     return _id;
 }
