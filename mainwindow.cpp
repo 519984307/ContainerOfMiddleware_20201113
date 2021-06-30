@@ -174,6 +174,8 @@ void MainWindow::plateProcess(LicensePlateInterface* pLicensePlateInterface)
     connect(this,&MainWindow::simulationCaptureSignal,pLicensePlateInterface,&LicensePlateInterface::simulationCaptureSlot);
     /* 识别结果 */
     connect(pLicensePlateInterface,&LicensePlateInterface::resultsTheLicensePlateSignal,this,&MainWindow::resultsTheLicensePlateSlot);
+    /* 车牌图片 */
+    connect(pLicensePlateInterface,&LicensePlateInterface::imageFlowSignal,this,&MainWindow::imageFlowSlot);
     /* 相机状态 */
     connect(pLicensePlateInterface,&LicensePlateInterface::equipmentStateSignal,this,&MainWindow::equipmentStateSlot);
     /* 485透传 */
@@ -198,6 +200,45 @@ void MainWindow::containerProcess(SocketServerInterface *pSocketServerInterface)
     connect(this,&MainWindow::releaseResourcesSignal,pSocketServerInterface,&SocketServerInterface::releaseResourcesSlot);
     /* 日志 */
     connect(pSocketServerInterface,&SocketServerInterface::messageSignal,this,&MainWindow::messageSlot);
+}
+
+void MainWindow::savePlateImage(QString plate, QString time, QByteArray img)
+{
+    /*****************************
+    * @brief:创建车牌目录
+    ******************************/
+    QDir dir(toPath);
+    QString pathTime=QDateTime::fromString(time,"yyyy-M-d h:m:s").toString("yyyyMMdd");
+    dir.mkdir(pathTime);
+    dir.cd(pathTime);
+    dir.mkdir(plate);
+    dir.cd(plate);
+    QString fileName=QDir::toNativeSeparators(QString("%1/%2%3").arg(dir.absolutePath(),QDateTime::fromString(time,"yyyy-M-d h:m:s").toString("yyyyMMddhhmmss"),plate));
+
+    QPixmap pix;
+    if(!img.isEmpty()){
+        pix.loadFromData(img);
+        if(pix.save(fileName+"车头.jpg","JPG",100)){
+            showMsg("车头图片保存成功");
+        }
+        else {
+            showMsg("车头图片保存失败");
+        }
+        img.clear();
+    }
+
+    if(!plateImg.isEmpty()){
+        pix.loadFromData(plateImg);
+        if(pix.save(fileName+"车牌.jpg","JPG",100)){
+            showMsg("车牌图片保存成功");
+        }
+        else {
+            showMsg("车牌图片保存失败");
+        }
+        plateImg.clear();
+    }
+
+    QtConcurrent::run(this,&MainWindow::rename,plate,time);
 }
 
 void MainWindow::plateErrMsg()
@@ -245,12 +286,19 @@ void MainWindow::plateErrMsg()
 
 void MainWindow::resultsTheLicensePlateSlot(const QString &plate, const QString &color, const QString &time, QByteArray arrImg)
 {
+    Q_UNUSED(color);
+
     this->plate=plate;
 
     if(plate==""){
         plateErrMsg();
     }
     else {
+        /*****************************
+        * @brief:保存车牌图片
+        ******************************/
+        savePlateImage(plate,time,arrImg);
+
         emit liftingElectronicRailingSignal(true);
 
         QString msg1=bgkToHex(plate);
@@ -285,6 +333,13 @@ void MainWindow::resultsTheLicensePlateSlot(const QString &plate, const QString 
     QTimer::singleShot(31000,this,SLOT(on_send485pushButton_2_clicked()));
 }
 
+void MainWindow::imageFlowSlot(QByteArray img)
+{
+    if(!plate.isEmpty()){
+        plateImg=img;
+    }
+}
+
 void MainWindow::equipmentStateSlot(bool state)
 {
     if(state){
@@ -301,7 +356,7 @@ void MainWindow::socketReadDataSlot(const QString &data)
 {
     if(data.trimmed()!="[H]"){
         int dex=data.indexOf("[C|");
-        if(dex!=-1 && plate!="" /*&& plate!="无车牌"*/){
+        if(dex!=-1 && !plate.isEmpty() /*&& plate!="无车牌"*/){
             datetmp=data.mid(dex+3,14);
             showMsg(datetmp);
 
@@ -328,11 +383,16 @@ void MainWindow::slot_handleFinished()
             }
         }
     }
-    showMsg("路径查找失败");
+    else
+    {
+        showMsg("路径查找失败");
+    }
 }
 
 void MainWindow::socketLinkStateSlot(const QString &address, bool state)
 {
+    Q_UNUSED(address);
+
     if(state){
         ui->containerlabel_6->setStyleSheet("background-color: rgb(85, 170, 0);");
         showMsg("箱号服务链接成功");
@@ -345,6 +405,8 @@ void MainWindow::socketLinkStateSlot(const QString &address, bool state)
 
 void MainWindow::messageSlot(const QString &type, const QString &msg)
 {
+    Q_UNUSED(type);
+
     if(msg.trimmed()!="[H]"){
 
         QDir dir(QCoreApplication::applicationDirPath());
@@ -400,6 +462,39 @@ void MainWindow::copyFile(QString plate,QString datetime)
         }
     }
     qDebug()<<datetime;
+}
+
+void MainWindow::rename(QString plate, QString plateTime)
+{
+    QString pathTime=QDateTime::fromString(plateTime,"yyyy-M-d h:m:s").toString("yyyyMMdd");
+
+    QThread::sleep(timeOut);
+    QDir dir(toPath);
+    dir.mkdir(pathTime);
+    dir.cd(pathTime);
+    dir.mkdir(plate);
+    dir.cd(plate);
+
+    QString name="";
+
+    uint time_1=QDateTime::fromString(plateTime,"yyyy-M-d h:m:s").toTime_t();
+    for(const QString &fileName :dir.entryList(QDir::Files,QDir::Name|QDir::Reversed)){
+        uint time_2=QDateTime::fromString(fileName.mid(14),"yyyyMMddhhmmss").toTime_t();
+        if(time_2-time_1>=0 && -1!=fileName.indexOf("车底")){
+            name=fileName.mid(17);
+        }
+    }
+
+    if(!name.isEmpty()){
+        QString fileName=QDir::toNativeSeparators(QString("%1/%2%3").arg(dir.absolutePath(),QDateTime::fromString(plateTime,"yyyy-M-d h:m:s").toString("yyyyMMddhhmmss"),plate));
+
+        QString file1= dir.absoluteFilePath(fileName.append("车头.jpg"));
+        QImage image1(file1);
+        image1.save(name.append(plate).append("车头.jpg"),"JPG",100);
+        QString file2= dir.absoluteFilePath(fileName.append("车牌.jpg"));
+        QImage image2(file2);
+        image2.save(name.append(plate).append("车头.jpg"),"JPG",100);
+    }
 }
 
 

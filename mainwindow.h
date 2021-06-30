@@ -44,6 +44,7 @@ private:
 
     void plateProcess(LicensePlateInterface* pLicensePlateInterface);
     void containerProcess(SocketServerInterface* pSocketServerInterface);
+    void savePlateImage(QString plate, QString time, QByteArray img);
 
     void plateErrMsg();
 
@@ -66,6 +67,8 @@ private:
     QString datetmp;
     bool exit;
 
+    QByteArray plateImg;
+
 private:
     Ui::MainWindow *ui;
     Dialog *Dlg;
@@ -87,6 +90,12 @@ private slots:
     /// \param arrImg
     ///
     void resultsTheLicensePlateSlot(const QString &plate,const QString &color,const QString &time,QByteArray arrImg);
+    
+    ///
+    /// \brief imageFlowSlot 车牌图片
+    /// \param img
+    ///
+    void imageFlowSlot(QByteArray img);
 
     ///
     /// \brief equipmentStateslot  设备额在线状态
@@ -119,7 +128,14 @@ private slots:
     ///
     /// \brief copyFile 复制文件
     ///
-    void  copyFile(QString plate, QString datetime);
+    void copyFile(QString plate, QString datetime);
+
+    ///
+    /// \brief rename 重命名车牌文件
+    /// \param plate
+    /// \param plateTime
+    ///
+    void rename(QString plate,QString plateTime);
 
     void on_putpushButton_clicked();
 

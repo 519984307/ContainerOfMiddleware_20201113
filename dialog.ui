@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="ico.qrc">
+    <normaloff>:/new/prefix1/ICO.ico</normaloff>:/new/prefix1/ICO.ico</iconset>
+  </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
     <widget class="QSplitter" name="splitter">
@@ -43,7 +47,9 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="ico.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>buttonBox</sender>

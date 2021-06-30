@@ -1,4 +1,4 @@
-#include "electroniclicenseplate.h"
+﻿#include "electroniclicenseplate.h"
 
 ElectronicLicensePlate *ElectronicLicensePlate::pThis=nullptr;
 bool ElectronicLicensePlate::complate=false;
@@ -197,9 +197,13 @@ void ElectronicLicensePlate::dataEx2Callback(CLIENT_LPRC_PLATE_RESULTEX *recResu
 
     emit pThis->resultsTheLicensePlateSignal(QString::fromLocal8Bit(recResultEx->chLicense),QString::fromLocal8Bit(recResultEx->chColor),dateTime,arrImg);
     emit pThis->messageSignal(ZBY_LOG("INFO"),tr("License Plate recognition results:%1-%2").arg(QString::fromLocal8Bit(recResultEx->chLicense)).arg(dateTime));
+    
+    QByteArray arrImgL(reinterpret_cast<const char*>(recResultEx->pPlateImage.pBuffer),recResultEx->pPlateImage.nLen);
+    emit pThis->imageFlowSignal(arrImgL);
 
     pThis->saveImg(arrImg,dateTime);
     arrImg.clear();
+    arrImgL.clear();
 }
 
 void ElectronicLicensePlate::jpegCallback(CLIENT_LPRC_DEVDATA_INFO *JpegInfo, LDWORD dwUser)
