@@ -199,7 +199,7 @@ void ElectronicLicensePlate::dataEx2Callback(CLIENT_LPRC_PLATE_RESULTEX *recResu
     emit pThis->messageSignal(ZBY_LOG("INFO"),tr("License Plate recognition results:%1-%2").arg(QString::fromLocal8Bit(recResultEx->chLicense)).arg(dateTime));
     
     QByteArray arrImgL(reinterpret_cast<const char*>(recResultEx->pPlateImage.pBuffer),recResultEx->pPlateImage.nLen);
-    emit pThis->imageFlowSignal(arrImgL);
+    emit pThis->imageFlowSignal(QString::fromLocal8Bit(recResultEx->chLicense),QString::fromLocal8Bit(recResultEx->chColor),dateTime,arrImgL);
 
     pThis->saveImg(arrImg,dateTime);
     arrImg.clear();

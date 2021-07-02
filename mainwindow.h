@@ -44,7 +44,7 @@ private:
 
     void plateProcess(LicensePlateInterface* pLicensePlateInterface);
     void containerProcess(SocketServerInterface* pSocketServerInterface);
-    void savePlateImage(QString plate, QString time, QByteArray img);
+    void savePlateImage(QString plate, QString time, QByteArray img,QString name);
 
     void plateErrMsg();
 
@@ -95,7 +95,7 @@ private slots:
     /// \brief imageFlowSlot 车牌图片
     /// \param img
     ///
-    void imageFlowSlot(QByteArray img);
+    void imageFlowSlot(const QString &plate,const QString &color,const QString &time,QByteArray img);
 
     ///
     /// \brief equipmentStateslot  设备额在线状态

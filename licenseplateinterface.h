@@ -1,4 +1,4 @@
-#ifndef LICENSEPLATEINTERFACE_H
+﻿#ifndef LICENSEPLATEINTERFACE_H
 #define LICENSEPLATEINTERFACE_H
 
 #include <QObject>
@@ -22,7 +22,7 @@ signals:
     /// \brief imageFlowSignal 图片流
     /// \param img
     ///
-    void imageFlowSignal(QByteArray img);
+    void imageFlowSignal(const QString &plate,const QString &color,const QString &time,QByteArray img);
 
     ///
     /// \brief theVideoStreamSignal 视频流

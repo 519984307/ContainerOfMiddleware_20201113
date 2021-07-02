@@ -202,7 +202,7 @@ void MainWindow::containerProcess(SocketServerInterface *pSocketServerInterface)
     connect(pSocketServerInterface,&SocketServerInterface::messageSignal,this,&MainWindow::messageSlot);
 }
 
-void MainWindow::savePlateImage(QString plate, QString time, QByteArray img)
+void MainWindow::savePlateImage(QString plate, QString time, QByteArray img, QString name)
 {
     /*****************************
     * @brief:创建车牌目录
@@ -218,27 +218,14 @@ void MainWindow::savePlateImage(QString plate, QString time, QByteArray img)
     QPixmap pix;
     if(!img.isEmpty()){
         pix.loadFromData(img);
-        if(pix.save(fileName+"车头.jpg","JPG",100)){
-            showMsg("车头图片保存成功");
+        if(pix.save(fileName.append(name).append(".jpg"),"JPG",100)){
+            showMsg(name+"图片保存成功");
         }
         else {
-            showMsg("车头图片保存失败");
+            showMsg(name+"车头图片保存失败");
         }
         img.clear();
     }
-
-    if(!plateImg.isEmpty()){
-        pix.loadFromData(plateImg);
-        if(pix.save(fileName+"车牌.jpg","JPG",100)){
-            showMsg("车牌图片保存成功");
-        }
-        else {
-            showMsg("车牌图片保存失败");
-        }
-        plateImg.clear();
-    }
-
-    QtConcurrent::run(this,&MainWindow::rename,plate,time);
 }
 
 void MainWindow::plateErrMsg()
@@ -297,7 +284,7 @@ void MainWindow::resultsTheLicensePlateSlot(const QString &plate, const QString 
         /*****************************
         * @brief:保存车牌图片
         ******************************/
-        savePlateImage(plate,time,arrImg);
+        savePlateImage(plate,time,arrImg,"车头");
 
         emit liftingElectronicRailingSignal(true);
 
@@ -331,13 +318,17 @@ void MainWindow::resultsTheLicensePlateSlot(const QString &plate, const QString 
     }
 
     QTimer::singleShot(31000,this,SLOT(on_send485pushButton_2_clicked()));
+    QtConcurrent::run(this,&MainWindow::rename,plate,time);
 }
 
-void MainWindow::imageFlowSlot(QByteArray img)
+void MainWindow::imageFlowSlot(const QString &plate, const QString &color, const QString &time, QByteArray img)
 {
-    if(!plate.isEmpty()){
-        plateImg=img;
-    }
+    Q_UNUSED(color);
+
+    /*****************************
+    * @brief:保存车牌图片
+    ******************************/
+    savePlateImage(plate,time,img,"车牌");
 }
 
 void MainWindow::equipmentStateSlot(bool state)
@@ -383,10 +374,10 @@ void MainWindow::slot_handleFinished()
             }
         }
     }
-    else
-    {
-        showMsg("路径查找失败");
-    }
+//    else
+//    {
+//        showMsg("路径查找失败");
+//    }
 }
 
 void MainWindow::socketLinkStateSlot(const QString &address, bool state)
@@ -480,7 +471,7 @@ void MainWindow::rename(QString plate, QString plateTime)
     uint time_1=QDateTime::fromString(plateTime,"yyyy-M-d h:m:s").toTime_t();
     for(const QString &fileName :dir.entryList(QDir::Files,QDir::Name|QDir::Reversed)){
         uint time_2=QDateTime::fromString(fileName.mid(14),"yyyyMMddhhmmss").toTime_t();
-        if(time_2-time_1>=0 && -1!=fileName.indexOf("车底")){
+        if(time_2-time_1>0 && fileName.size()>21){
             name=fileName.mid(17);
         }
     }
