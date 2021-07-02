@@ -222,7 +222,7 @@ void MainWindow::savePlateImage(QString plate, QString time, QByteArray img, QSt
             showMsg(name+"图片保存成功");
         }
         else {
-            showMsg(name+"车头图片保存失败");
+            showMsg(name+"图片保存失败");
         }
         img.clear();
     }
@@ -480,16 +480,10 @@ void MainWindow::rename(QString plate, QString plateTime)
     if(!name.isEmpty()){
         QString fileName=QDir::toNativeSeparators(QString("%1/%2%3").arg(dir.absolutePath(),QDateTime::fromString(plateTime,"yyyy-M-d h:m:s").toString("yyyyMMddhhmmss"),plate));
 
-        QString file1= dir.absoluteFilePath(fileName.append("车头.jpg"));
-        QImage image1(file1);
-        image1.save(QDir::toNativeSeparators(dir.absolutePath()+"/"+name.append(plate).append("车头.jpg")),"JPG",100);
-        QString file2= dir.absoluteFilePath(fileName.append("车牌.jpg"));
-        QImage image2(file2);
-        image2.save(QDir::toNativeSeparators(dir.absolutePath()+"/"+name.append(plate).append("车牌.jpg")),"JPG",100);
+        QFile::rename(dir.absoluteFilePath(fileName+"车头.jpg"),dir.absolutePath()+"/"+name+plate+"车头.jpg");
+        QFile::rename(dir.absoluteFilePath(fileName+"车牌.jpg"),dir.absolutePath()+"/"+name+plate+"车牌.jpg");
     }
 }
-
-
 
 void MainWindow::on_putpushButton_clicked()
 {
