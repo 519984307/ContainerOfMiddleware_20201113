@@ -37,13 +37,13 @@ QT_MOC_LITERAL(2, 36, 0), // ""
 QT_MOC_LITERAL(3, 37, 4), // "type"
 QT_MOC_LITERAL(4, 42, 3), // "msg"
 QT_MOC_LITERAL(5, 46, 15), // "imageFlowSignal"
-QT_MOC_LITERAL(6, 62, 3), // "img"
-QT_MOC_LITERAL(7, 66, 20), // "theVideoStreamSignal"
-QT_MOC_LITERAL(8, 87, 6), // "arrImg"
-QT_MOC_LITERAL(9, 94, 28), // "resultsTheLicensePlateSignal"
-QT_MOC_LITERAL(10, 123, 5), // "plate"
-QT_MOC_LITERAL(11, 129, 5), // "color"
-QT_MOC_LITERAL(12, 135, 4), // "time"
+QT_MOC_LITERAL(6, 62, 5), // "plate"
+QT_MOC_LITERAL(7, 68, 5), // "color"
+QT_MOC_LITERAL(8, 74, 4), // "time"
+QT_MOC_LITERAL(9, 79, 3), // "img"
+QT_MOC_LITERAL(10, 83, 20), // "theVideoStreamSignal"
+QT_MOC_LITERAL(11, 104, 6), // "arrImg"
+QT_MOC_LITERAL(12, 111, 28), // "resultsTheLicensePlateSignal"
 QT_MOC_LITERAL(13, 140, 20), // "equipmentStateSignal"
 QT_MOC_LITERAL(14, 161, 5), // "state"
 QT_MOC_LITERAL(15, 167, 17), // "signal_initCamera"
@@ -78,13 +78,13 @@ QT_MOC_LITERAL(43, 585, 19) // "slot_equipmentState"
 
     },
     "LicensePlateInterface\0messageSignal\0"
-    "\0type\0msg\0imageFlowSignal\0img\0"
-    "theVideoStreamSignal\0arrImg\0"
-    "resultsTheLicensePlateSignal\0plate\0"
-    "color\0time\0equipmentStateSignal\0state\0"
-    "signal_initCamera\0localAddr\0addr\0port\0"
-    "user\0pow\0signal_openTheVideo\0ID\0play\0"
-    "winID\0signal_simulationCapture\0"
+    "\0type\0msg\0imageFlowSignal\0plate\0color\0"
+    "time\0img\0theVideoStreamSignal\0arrImg\0"
+    "resultsTheLicensePlateSignal\0"
+    "equipmentStateSignal\0state\0signal_initCamera\0"
+    "localAddr\0addr\0port\0user\0pow\0"
+    "signal_openTheVideo\0ID\0play\0winID\0"
+    "signal_simulationCapture\0"
     "signal_liftingElectronicRailing\0gate\0"
     "signal_transparentTransmission485\0"
     "initCameraSlot\0imgPath\0imgFormat\0"
@@ -113,34 +113,34 @@ static const uint qt_meta_data_LicensePlateInterface[] = {
 
  // signals: name, argc, parameters, tag, flags
        1,    2,  119,    2, 0x06 /* Public */,
-       5,    1,  124,    2, 0x06 /* Public */,
-       7,    1,  127,    2, 0x06 /* Public */,
-       9,    4,  130,    2, 0x06 /* Public */,
-      13,    1,  139,    2, 0x06 /* Public */,
-      15,    5,  142,    2, 0x06 /* Public */,
-      21,    3,  153,    2, 0x06 /* Public */,
-      25,    1,  160,    2, 0x06 /* Public */,
-      26,    1,  163,    2, 0x06 /* Public */,
-      28,    1,  166,    2, 0x06 /* Public */,
+       5,    4,  124,    2, 0x06 /* Public */,
+      10,    1,  133,    2, 0x06 /* Public */,
+      12,    4,  136,    2, 0x06 /* Public */,
+      13,    1,  145,    2, 0x06 /* Public */,
+      15,    5,  148,    2, 0x06 /* Public */,
+      21,    3,  159,    2, 0x06 /* Public */,
+      25,    1,  166,    2, 0x06 /* Public */,
+      26,    1,  169,    2, 0x06 /* Public */,
+      28,    1,  172,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-      29,    6,  169,    2, 0x0a /* Public */,
-      33,    0,  182,    2, 0x0a /* Public */,
-      34,    1,  183,    2, 0x0a /* Public */,
-      35,    1,  186,    2, 0x0a /* Public */,
-      36,    2,  189,    2, 0x0a /* Public */,
-      36,    1,  194,    2, 0x2a /* Public | MethodCloned */,
-      37,    0,  197,    2, 0x0a /* Public */,
-      38,    2,  198,    2, 0x0a /* Public */,
-      40,    2,  203,    2, 0x0a /* Public */,
-      42,    5,  208,    2, 0x0a /* Public */,
-      43,    2,  219,    2, 0x0a /* Public */,
+      29,    6,  175,    2, 0x0a /* Public */,
+      33,    0,  188,    2, 0x0a /* Public */,
+      34,    1,  189,    2, 0x0a /* Public */,
+      35,    1,  192,    2, 0x0a /* Public */,
+      36,    2,  195,    2, 0x0a /* Public */,
+      36,    1,  200,    2, 0x2a /* Public | MethodCloned */,
+      37,    0,  203,    2, 0x0a /* Public */,
+      38,    2,  204,    2, 0x0a /* Public */,
+      40,    2,  209,    2, 0x0a /* Public */,
+      42,    5,  214,    2, 0x0a /* Public */,
+      43,    2,  225,    2, 0x0a /* Public */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::QString, QMetaType::QString,    3,    4,
-    QMetaType::Void, QMetaType::QByteArray,    6,
-    QMetaType::Void, QMetaType::QByteArray,    8,
-    QMetaType::Void, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::QByteArray,   10,   11,   12,    8,
+    QMetaType::Void, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::QByteArray,    6,    7,    8,    9,
+    QMetaType::Void, QMetaType::QByteArray,   11,
+    QMetaType::Void, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::QByteArray,    6,    7,    8,   11,
     QMetaType::Void, QMetaType::Bool,   14,
     QMetaType::Void, QMetaType::QString, QMetaType::QString, QMetaType::Int, QMetaType::QString, QMetaType::QString,   16,   17,   18,   19,   20,
     QMetaType::Void, QMetaType::Int, QMetaType::Bool, QMetaType::ULongLong,   22,   23,   24,
@@ -158,7 +158,7 @@ static const uint qt_meta_data_LicensePlateInterface[] = {
     QMetaType::Void,
     QMetaType::Void, QMetaType::Int, QMetaType::QByteArray,   22,   39,
     QMetaType::Void, QMetaType::Int, QMetaType::QString,   22,   41,
-    QMetaType::Void, QMetaType::Int, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::QByteArray,   22,   10,   11,   12,    8,
+    QMetaType::Void, QMetaType::Int, QMetaType::QString, QMetaType::QString, QMetaType::QString, QMetaType::QByteArray,   22,    6,    7,    8,   11,
     QMetaType::Void, QMetaType::Int, QMetaType::Bool,   22,   14,
 
        0        // eod
@@ -171,7 +171,7 @@ void LicensePlateInterface::qt_static_metacall(QObject *_o, QMetaObject::Call _c
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->messageSignal((*reinterpret_cast< const QString(*)>(_a[1])),(*reinterpret_cast< const QString(*)>(_a[2]))); break;
-        case 1: _t->imageFlowSignal((*reinterpret_cast< QByteArray(*)>(_a[1]))); break;
+        case 1: _t->imageFlowSignal((*reinterpret_cast< const QString(*)>(_a[1])),(*reinterpret_cast< const QString(*)>(_a[2])),(*reinterpret_cast< const QString(*)>(_a[3])),(*reinterpret_cast< QByteArray(*)>(_a[4]))); break;
         case 2: _t->theVideoStreamSignal((*reinterpret_cast< QByteArray(*)>(_a[1]))); break;
         case 3: _t->resultsTheLicensePlateSignal((*reinterpret_cast< const QString(*)>(_a[1])),(*reinterpret_cast< const QString(*)>(_a[2])),(*reinterpret_cast< const QString(*)>(_a[3])),(*reinterpret_cast< QByteArray(*)>(_a[4]))); break;
         case 4: _t->equipmentStateSignal((*reinterpret_cast< bool(*)>(_a[1]))); break;
@@ -203,7 +203,7 @@ void LicensePlateInterface::qt_static_metacall(QObject *_o, QMetaObject::Call _c
             }
         }
         {
-            using _t = void (LicensePlateInterface::*)(QByteArray );
+            using _t = void (LicensePlateInterface::*)(const QString & , const QString & , const QString & , QByteArray );
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&LicensePlateInterface::imageFlowSignal)) {
                 *result = 1;
                 return;
@@ -316,9 +316,9 @@ void LicensePlateInterface::messageSignal(const QString & _t1, const QString & _
 }
 
 // SIGNAL 1
-void LicensePlateInterface::imageFlowSignal(QByteArray _t1)
+void LicensePlateInterface::imageFlowSignal(const QString & _t1, const QString & _t2, const QString & _t3, QByteArray _t4)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)), const_cast<void*>(reinterpret_cast<const void*>(&_t3)), const_cast<void*>(reinterpret_cast<const void*>(&_t4)) };
     QMetaObject::activate(this, &staticMetaObject, 1, _a);
 }
 

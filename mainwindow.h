@@ -44,6 +44,7 @@ private:
 
     void plateProcess(LicensePlateInterface* pLicensePlateInterface);
     void containerProcess(SocketServerInterface* pSocketServerInterface);
+
     void savePlateImage(QString plate, QString time, QByteArray img,QString name);
 
     void plateErrMsg();
@@ -79,6 +80,8 @@ private:
     QFutureWatcher<void> *watcher;
 
 private slots:
+
+
 
     void slot_handleFinished();
 

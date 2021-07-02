@@ -284,7 +284,6 @@ void MainWindow::resultsTheLicensePlateSlot(const QString &plate, const QString 
         /*****************************
         * @brief:保存车牌图片
         ******************************/
-        savePlateImage(plate,time,arrImg,"车头");
 
         emit liftingElectronicRailingSignal(true);
 
@@ -315,6 +314,8 @@ void MainWindow::resultsTheLicensePlateSlot(const QString &plate, const QString 
 
         emit transparentTransmission485Signal(tmp);
         showMsg("识别车牌:"+arr);
+
+        savePlateImage(plate,time,arrImg,"车头");
     }
 
     QTimer::singleShot(31000,this,SLOT(on_send485pushButton_2_clicked()));
@@ -470,9 +471,9 @@ void MainWindow::rename(QString plate, QString plateTime)
 
     uint time_1=QDateTime::fromString(plateTime,"yyyy-M-d h:m:s").toTime_t();
     for(const QString &fileName :dir.entryList(QDir::Files,QDir::Name|QDir::Reversed)){
-        uint time_2=QDateTime::fromString(fileName.mid(14),"yyyyMMddhhmmss").toTime_t();
+        uint time_2=QDateTime::fromString(fileName.mid(0,14),"yyyyMMddhhmmss").toTime_t();
         if(time_2-time_1>0 && fileName.size()>21){
-            name=fileName.mid(17);
+            name=fileName.mid(0,17);
         }
     }
 
@@ -481,10 +482,10 @@ void MainWindow::rename(QString plate, QString plateTime)
 
         QString file1= dir.absoluteFilePath(fileName.append("车头.jpg"));
         QImage image1(file1);
-        image1.save(name.append(plate).append("车头.jpg"),"JPG",100);
+        image1.save(QDir::toNativeSeparators(dir.absolutePath()+"/"+name.append(plate).append("车头.jpg")),"JPG",100);
         QString file2= dir.absoluteFilePath(fileName.append("车牌.jpg"));
         QImage image2(file2);
-        image2.save(name.append(plate).append("车头.jpg"),"JPG",100);
+        image2.save(QDir::toNativeSeparators(dir.absolutePath()+"/"+name.append(plate).append("车牌.jpg")),"JPG",100);
     }
 }
 
