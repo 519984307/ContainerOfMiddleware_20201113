@@ -319,7 +319,7 @@ void MainWindow::resultsTheLicensePlateSlot(const QString &plate, const QString 
     }
 
     QTimer::singleShot(31000,this,SLOT(on_send485pushButton_2_clicked()));
-    QtConcurrent::run(this,&MainWindow::rename,plate,time);
+    //QtConcurrent::run(this,&MainWindow::rename,plate,time);
 }
 
 void MainWindow::imageFlowSlot(const QString &plate, const QString &color, const QString &time, QByteArray img)
